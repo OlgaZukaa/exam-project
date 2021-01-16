@@ -27,7 +27,7 @@ function Stats() {
       });
   }, []);
 
-  const chartData = {
+  const countChartData = {
     labels: stats.map((statsItem) => statsItem.timestamp),
     datasets: [
       {
@@ -50,13 +50,41 @@ function Stats() {
       },
     ],
   };
+
+  const timeChartData = {
+    labels: stats.map((statsItem) => statsItem.timestamp),
+    datasets: [
+      {
+        label: "Max",
+        fill: false,
+        borderColor: "cyan",
+        data: stats.map((statsItem) => statsItem.maxResTime),
+      },
+      {
+        label: "Min",
+        fill: false,
+        borderColor: "magenta",
+        data: stats.map((statsItem) => statsItem.minResTime),
+      },
+      {
+        label: "Avg",
+        fill: false,
+        borderColor: "yellow",
+        data: stats.map((statsItem) => statsItem.avgResTime),
+      },
+    ],
+  };
   const chartOptions = {
     animation: false
   };
 
   return (
     <div className="Stats">
-      <Line data={chartData} options={chartOptions} />
+     <h3> Count statistics</h3>
+      <Line data={countChartData} options={chartOptions} />
+
+      <h3> Time statistics</h3>
+      <Line data={timeChartData} options={chartOptions} />
     </div>
   );
 }

@@ -56,7 +56,7 @@ app.get('/stats', function (req, res) {
 
 setInterval(() => {
     stats.push({
-        timestamp: Date.now(),
+        timestamp: new Date().toLocaleTimeString(),
         minResTime: currentStats.minResTime,
         maxResTime: currentStats.maxResTime,
         valid: currentStats.valid,
