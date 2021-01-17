@@ -44,7 +44,6 @@ function Stats() {
     ],
   };
 
-  //new Date().toLocaleTimeString()cd 
   const timeChartData = {
     labels: stats.map((statsItem) => new Date(statsItem.timestamp).toLocaleTimeString()),
     datasets: [
