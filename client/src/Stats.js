@@ -4,31 +4,24 @@ import { useState, useEffect } from "react";
 function Stats() {
   const [stats, updateStats] = useState([]);
 
-  useEffect(() => {
-    fetch("http://localhost:4000/stats")
+  const fetchStats = () => {
+    return fetch("http://localhost:4000/stats")
       .then((res) => {
         return res.json();
       })
       .then((data) => {
         console.log("data = ", data);
         updateStats(data);
-
-        setInterval(() => {
-          console.log("This will run every second!");
-          fetch("http://localhost:4000/stats")
-            .then((res) => {
-              return res.json();
-            })
-            .then((data) => {
-              console.log("data2 = ", data);
-              updateStats(data);
-            })
-        }, 5000);
       });
+  }
+  useEffect(() => {
+    fetchStats().then(() => {
+      setInterval(fetchStats, 5000);
+    })
   }, []);
 
   const countChartData = {
-    labels: stats.map((statsItem) => statsItem.timestamp),
+    labels: stats.map((statsItem) => new Date(statsItem.timestamp).toLocaleTimeString()),
     datasets: [
       {
         label: "Valid",
@@ -51,8 +44,9 @@ function Stats() {
     ],
   };
 
+  //new Date().toLocaleTimeString()cd 
   const timeChartData = {
-    labels: stats.map((statsItem) => statsItem.timestamp),
+    labels: stats.map((statsItem) => new Date(statsItem.timestamp).toLocaleTimeString()),
     datasets: [
       {
         label: "Max",
@@ -80,10 +74,10 @@ function Stats() {
 
   return (
     <div className="Stats">
-     <h3> Count statistics</h3>
+      <h3> Response count statistics</h3>
       <Line data={countChartData} options={chartOptions} />
 
-      <h3> Time statistics</h3>
+      <h3> Response time statistics</h3>
       <Line data={timeChartData} options={chartOptions} />
     </div>
   );
