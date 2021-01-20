@@ -73,10 +73,12 @@ The script will send valid requests to the monitored endpoint each 1s and invali
 
 ## Final result
 
-Response count statistics chart:
-![chart-1](docs/chart-1.jpg)
+>Response count statistics chart:
+>
+>![chart-1](docs/chart-1.jpg)
 
 
-Response time statistics chart:
-![chart-2](docs/chart-2.jpg)
+>Response time statistics chart:
+>
+>![chart-2](docs/chart-2.jpg)
 
