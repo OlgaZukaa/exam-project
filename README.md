@@ -1,14 +1,17 @@
 # Introduction
  
- TODO
+**Problem to solve:** To monitor the activity and behavior of a software resource.
+
+**Solution:** Collect data about traffic on the server, in this case it is request total amount, valid, invalid request amount and a minimal, maximal and avarage response time. Every 10 seconds data is collected from server and gets stored in Database. For graphic representation, charts, which vizualizes information from the database, are displayed on the Client Application. The charts represent 10 recent traffic statistics records and each 5 seconds data is updated which allows to monitor statistics in real-time without page refreshing. The whole system is implemented locally.
+
 
 # Technologies
 
-Database: MongoDB
+**Database:** MongoDB
 
-Server: Node.js, Express.js
+**Server:** Node.js, Express.js
 
-Client: React, Chart.js
+**Client:** React, Chart.js
 
 # Installation
  - Download and install Node.js. Instruction [here](https://nodejs.dev/learn/how-to-install-nodejs). 
